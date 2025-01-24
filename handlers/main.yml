@@ -1,0 +1,5 @@
+---
+- name: Reload semaphore service
+  ansible.builtin.service:
+    name: semaphore
+    state: reloaded

@@ -1,0 +1,56 @@
+{
+    "_comment": "{{ ansible_managed }}",
+    "bolt": {
+        "host": "{{ semaphoreui_bolt_host }}"
+    },
+    "mysql": {
+        "host": "{{ semaphoreui_mysql_host }}",
+        "user": "{{ semaphoreui_mysql_user }}",
+        "pass": "{{ semaphoreui_mysql_pass }}",
+        "name": "{{ semaphoreui_mysql_name }}",
+        "options": {{ semaphoreui_mysql_options | to_json }}
+    },
+    "postgres": {
+        "host": "{{ semaphoreui_postgres_host }}",
+        "user": "{{ semaphoreui_postgres_user }}",
+        "pass": "{{ semaphoreui_postgres_pass }}",
+        "name": "{{ semaphoreui_postgres_name }}",
+        "options": {{ semaphoreui_postgres_options | to_json }}
+    },
+    "dialect": "{{ semaphoreui_dialect }}",
+    "port": "{{ semaphoreui_port }}",
+    "interface": "{{ semaphoreui_interface }}",
+    "tmp_path": "{{ semaphoreui_tmp_path }}",
+    "cookie_hash": "{{ semaphoreui_cookie_hash }}",
+    "cookie_encryption": "{{ semaphoreui_cookie_encryption }}",
+    "access_key_encryption": "{{ semaphoreui_access_key_encryption }}",
+    "web_host": "{{ semaphoreui_web_host }}",
+    "ldap_binddn": "{{ semaphoreui_ldap_binddn }}",
+    "ldap_bindpassword": "{{ semaphoreui_ldap_bindpassword }}",
+    "ldap_server": "{{ semaphoreui_ldap_server }}",
+    "ldap_searchdn": "{{ semaphoreui_ldap_searchdn }}",
+    "ldap_searchfilter": "{{ semaphoreui_ldap_searchfilter }}",
+    "ldap_mappings": {
+        "dn": "{{ semaphoreui_ldap_mappings_dn }}",
+        "mail": "{{ semaphoreui_ldap_mappings_mail }}",
+        "uid": "{{ semaphoreui_ldap_mappings_uid }}",
+        "cn": "{{ semaphoreui_ldap_mappings_cn }}"
+    },
+    "concurrency_mode": "{{ semaphoreui_concurrency_mode }}",
+    "max_parallel_tasks": {{ semaphoreui_max_parallel_tasks }},
+    "telegram_alert": {{ semaphoreui_telegram_alert | to_json }},
+    "telegram_chat": "{{ semaphoreui_telegram_chat }}",
+    "telegram_token": "{{ semaphoreui_telegram_token }}",
+    "email_alert": {{ semaphoreui_email_alert | to_json }},
+    "email_sender": "{{ semaphoreui_email_sender }}",
+    "email_host": "{{ semaphoreui_email_host }}",
+    "email_port": "{{ semaphoreui_email_port }}",
+    "slack_alert": {{ semaphoreui_slack_alert | to_json }},
+    "slack_url": "{{ semaphoreui_slack_url }}",
+    "microsoft_teams_alert": {{ semaphoreui_microsoft_teams_alert | to_json }},
+    "microsoft_teams_url": "{{ semaphoreui_microsoft_teams_url }}",
+    "rocketchat_alert": {{ semaphoreui_rocketchat_alert | to_json }},
+    "rocketchat_url": "{{ semaphoreui_rocketchat_url }}",
+    "ldap_enable": {{ semaphoreui_ldap_enable | to_json }},
+    "ldap_needtls": {{ semaphoreui_ldap_needtls | to_json }}
+}

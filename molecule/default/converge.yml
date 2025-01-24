@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  roles:
+    - role: kirill-shtrykov.semaphoreui
+      semaphoreui_dialect: bolt
+      semaphoreui_cookie_hash: "test"
+      semaphoreui_cookie_encryption: "test"
+      semaphoreui_access_key_encryption: "test"

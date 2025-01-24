@@ -1,0 +1,54 @@
+---
+- name: Install and configure Semaphore UI
+  block:
+    - name: Debian | Install package
+      ansible.builtin.apt:
+        deb: "https://github.com/semaphoreui/semaphore/releases/download/\
+          v{{ semaphoreui_version }}/semaphore_{{ semaphoreui_version }}_linux_amd64.deb"
+      when: ansible_os_family == "Debian"
+    - name: RedHat | Install package
+      ansible.builtin.dnf:
+        name: "https://github.com/semaphoreui/semaphore/releases/download/\
+          v{{ semaphoreui_version }}/semaphore_{{ semaphoreui_version }}_linux_amd64.rpm"
+        disable_gpg_check: true
+      when: ansible_os_family == "RedHat"
+    - name: Add system user
+      ansible.builtin.user:
+        name: semaphore
+        system: true
+    - name: Create config directory
+      ansible.builtin.file:
+        name: /etc/semaphore
+        mode: "0755"
+        state: directory
+    - name: Create Bolt DB directory
+      ansible.builtin.file:
+        name: "{{ semaphoreui_bolt_host | dirname }}"
+        owner: semaphore
+        group: semaphore
+        mode: "0755"
+        state: directory
+      when: semaphoreui_dialect == "bolt"
+    - name: Create config
+      ansible.builtin.template:
+        src: config.json.j2
+        dest: /etc/semaphore/config.json
+        mode: "0644"
+      notify: Reload semaphore service
+    - name: Create SystemD service
+      ansible.builtin.template:
+        src: semaphore.service.j2
+        dest: /etc/systemd/system/semaphore.service
+        mode: "0644"
+      register: systemd_service
+    - name: Daemon reload
+      ansible.builtin.systemd:
+        daemon_reload: true
+      when:
+        - systemd_service is defined
+        - systemd_service.changed
+    - name: Enable and start semaphore service
+      ansible.builtin.service:
+        name: semaphore
+        enabled: true
+        state: started

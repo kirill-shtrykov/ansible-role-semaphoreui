@@ -1,0 +1,20 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: kirill-shtrykov
+  role_name: semaphoreui
+  description: Ansible role for installing and managing Semaphore UI.
+  license: MIT
+  min_ansible_version: 2.17.5
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm    # 12
+    - name: Rocky
+      versions:
+        - "9.0"
+  galaxy_tags:
+    - linux
+    - semaphoreui
+    - ci
