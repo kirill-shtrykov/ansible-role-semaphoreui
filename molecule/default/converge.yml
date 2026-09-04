@@ -3,9 +3,12 @@
   hosts: all
   become: true
 
-  roles:
-    - role: kirill-shtrykov.semaphoreui
-      semaphoreui_dialect: bolt
-      semaphoreui_cookie_hash: "test"
-      semaphoreui_cookie_encryption: "test"
-      semaphoreui_access_key_encryption: "test"
+  tasks:
+    - name: Run role
+      ansible.builtin.include_role:
+        name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
+      vars:
+        semaphoreui_dialect: bolt
+        semaphoreui_cookie_hash: "test"
+        semaphoreui_cookie_encryption: "test"
+        semaphoreui_access_key_encryption: "test"

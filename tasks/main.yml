@@ -5,14 +5,14 @@
       ansible.builtin.apt:
         deb: "https://github.com/semaphoreui/semaphore/releases/download/\
           v{{ semaphoreui_version }}/semaphore_{{ semaphoreui_version }}_linux_amd64.deb"
-      when: ansible_os_family == "Debian"
+      when: ansible_facts.os_family == "Debian"
 
     - name: RedHat | Install package
       ansible.builtin.dnf:
         name: "https://github.com/semaphoreui/semaphore/releases/download/\
           v{{ semaphoreui_version }}/semaphore_{{ semaphoreui_version }}_linux_amd64.rpm"
         disable_gpg_check: true
-      when: ansible_os_family == "RedHat"
+      when: ansible_facts.os_family == "RedHat"
 
     - name: Add system user
       ansible.builtin.user:
