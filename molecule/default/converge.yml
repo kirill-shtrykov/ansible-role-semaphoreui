@@ -8,7 +8,7 @@
       ansible.builtin.include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
       vars:
-        semaphoreui_dialect: bolt
+        semaphoreui_dialect: sqlite
         semaphoreui_cookie_hash: "test"
         semaphoreui_cookie_encryption: "test"
-        semaphoreui_access_key_encryption: "test"
+        semaphoreui_access_key_encryption: "Q+Sg52Iq4+cjGz0dBaGwzE9s6vUMeISt/pxQ9iszkGw="

@@ -28,14 +28,14 @@
         mode: "0755"
         state: directory
 
-    - name: Create Bolt DB directory
+    - name: Create SQLite DB directory
       ansible.builtin.file:
-        name: "{{ semaphoreui_bolt_host | dirname }}"
+        name: "{{ semaphoreui_sqlite_host | dirname }}"
         owner: semaphore
         group: semaphore
         mode: "0755"
         state: directory
-      when: semaphoreui_dialect == "bolt"
+      when: semaphoreui_dialect == "sqlite"
 
     - name: Create config
       ansible.builtin.template:

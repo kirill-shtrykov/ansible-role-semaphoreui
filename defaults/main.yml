@@ -1,59 +1,140 @@
 ---
-semaphoreui_version: 2.11.2
+# Semaphore UI version.
+semaphoreui_version: 2.18.27
 
-# semaphoreui_dialect: postgres               # Required
+# Database dialect. Supported values: sqlite, mysql, postgres.
+# semaphoreui_dialect: postgres # Required
 
-semaphoreui_bolt_host: /var/lib/semaphore/db.bolt
+# SQLite database path.
+semaphoreui_sqlite_host: /var/lib/semaphore/db.sqlite
 
+# MySQL database host.
 semaphoreui_mysql_host: localhost
+
+# MySQL database user.
 semaphoreui_mysql_user: root
+
+# MySQL database password.
 semaphoreui_mysql_pass: changeme
+
+# MySQL database name.
 semaphoreui_mysql_name: semaphore
+
+# Additional MySQL connection options.
 semaphoreui_mysql_options: {}
 
+# PostgreSQL database host.
 semaphoreui_postgres_host: localhost
+
+# PostgreSQL database user.
 semaphoreui_postgres_user: postgres
+
+# PostgreSQL database password.
 semaphoreui_postgres_pass: changeme
+
+# PostgreSQL database name.
 semaphoreui_postgres_name: semaphore
+
+# Additional PostgreSQL connection options.
 semaphoreui_postgres_options: {}
 
+# Semaphore UI listening port.
 semaphoreui_port: 3000
+
+# Network interface to listen on. Empty value listens on all interfaces.
 semaphoreui_interface: ""
+
+# Temporary directory used by Semaphore UI.
 semaphoreui_tmp_path: /tmp/semaphore
+
+# Web host name or address. Empty value disables the setting.
 semaphoreui_web_host: ""
+
+# Task concurrency mode.
 semaphoreui_concurrency_mode: ""
+
+# Maximum number of tasks that can run in parallel. 0 means unlimited.
 semaphoreui_max_parallel_tasks: 0
-# semaphoreui_cookie_hash: changeme           # Required
-# semaphoreui_cookie_encryption: changeme     # Required
+
+# Secret key used to hash session cookies.
+# semaphoreui_cookie_hash: changeme # Required
+
+# Secret key used to encrypt session cookies.
+# semaphoreui_cookie_encryption: changeme # Required
+
+# Encryption key for Semaphore UI access keys.
+# Must decode to 16, 24, or 32 bytes.
+# Generate with: openssl rand -base64 32
 # semaphoreui_access_key_encryption: changeme # Required
 
+# LDAP bind DN.
 semaphoreui_ldap_binddn: ""
+
+# LDAP bind password.
 semaphoreui_ldap_bindpassword: ""
+
+# LDAP server address.
 semaphoreui_ldap_server: ""
+
+# LDAP base DN used for user searches.
 semaphoreui_ldap_searchdn: ""
+
+# LDAP search filter used to find users.
 semaphoreui_ldap_searchfilter: ""
+
+# LDAP attribute mapped to the user's distinguished name.
 semaphoreui_ldap_mappings_dn: ""
+
+# LDAP attribute mapped to the user's email address.
 semaphoreui_ldap_mappings_mail: ""
+
+# LDAP attribute mapped to the user's username.
 semaphoreui_ldap_mappings_uid: ""
+
+# LDAP attribute mapped to the user's common name.
 semaphoreui_ldap_mappings_cn: ""
 
+# Enable email alerts.
 semaphoreui_email_alert: false
+
+# Email sender address.
 semaphoreui_email_sender: ""
+
+# SMTP server host.
 semaphoreui_email_host: ""
+
+# SMTP server port.
 semaphoreui_email_port: ""
 
+# Enable Telegram alerts.
 semaphoreui_telegram_alert: false
+
+# Telegram chat ID used for alerts.
 semaphoreui_telegram_chat: ""
+
+# Telegram bot token.
 semaphoreui_telegram_token: ""
 
+# Enable Slack alerts.
 semaphoreui_slack_alert: false
+
+# Slack webhook URL.
 semaphoreui_slack_url: ""
 
+# Enable Microsoft Teams alerts.
 semaphoreui_microsoft_teams_alert: false
+
+# Microsoft Teams webhook URL.
 semaphoreui_microsoft_teams_url: ""
 
+# Enable Rocket.Chat alerts.
 semaphoreui_rocketchat_alert: false
+
+# Rocket.Chat webhook URL.
 semaphoreui_rocketchat_url: ""
 
+# Enable LDAP authentication.
 semaphoreui_ldap_enable: false
+
+# Require TLS for LDAP connections.
 semaphoreui_ldap_needtls: false
